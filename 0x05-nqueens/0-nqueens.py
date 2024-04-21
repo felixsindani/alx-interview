@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-application of the backtracking algorithm to place N non-attacking queens on an N×N chessboard
+backtracking algorithm placing N non-attacking queens on an N×N chessboard
 """
 import sys
 
@@ -18,12 +18,12 @@ if not (num >= 4):
     print("N must be at least 4")
     sys.exit(1)
 
+
 def solveNQueens(n):
     """Solve for n queens"""
     col = set()  # track used columns
     neg = set()  # (r - c) track used negative diagonals
     pos = set()  # (r + c) track used positive diagonals
-    
     res = []
     # result
 
@@ -39,7 +39,7 @@ def solveNQueens(n):
             res.append(copy)
             return
 
-        for c in range(n): # for columns
+        for c in range(n):  # for columns
             # for used column or diagonals,skip
             if c in col or (row + c) in pos or (row - c) in neg:
                 continue
@@ -51,7 +51,7 @@ def solveNQueens(n):
 
             board[row] = [row, c]
 
-            backtrack(row + 1) # move to next row
+            backtrack(row + 1)  # move to next row
 
             # handle undoing
             col.remove(c)
